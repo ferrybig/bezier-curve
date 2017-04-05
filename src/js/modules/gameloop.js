@@ -21,11 +21,14 @@ var Gameloop = (function() {
 	};
 	
 	var _draw = function() {
-		graphics.clearRect(0,0,800,800);
 		Board.draw(graphics);
 		Points.draw(graphics);
 		Subpoints.draw(graphics);
 		Controller.draw(graphics);
+	};
+	
+	var getCanvas = function() {
+		return canvas;
 	};
 	
 	var pause = function() {
@@ -75,7 +78,8 @@ var Gameloop = (function() {
 	var self = {
 		init: init,
 		setTargetPhysicsRate: setTargetPhysicsRate,
-		pause: pause
+		pause: pause,
+		getCanvas: getCanvas
 	};
 	return self;
 })();
