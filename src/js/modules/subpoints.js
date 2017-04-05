@@ -7,6 +7,7 @@ var Subpoints = (function () {
 	var indicationPoints = [];
 	var indicationPointsSubLength;
 	var index = 0;
+	var pointsLength = 1000;
 	
 	
 	var reduce = function(first, second, place) {
@@ -21,9 +22,11 @@ var Subpoints = (function () {
 			graphics.fillStyle = "gray";
 			graphics.beginPath();
 			graphics.arc(Board.convertX(subpoints[i].x), Board.convertY(subpoints[i].y), 3, 0, 2 * Math.PI);
+			graphics.globalAlpha = Math.pow((subpoints.length + i - index) % subpoints.length / subpoints.length, 2);
 			graphics.closePath();
 			graphics.fill();
 		}
+		graphics.globalAlpha = 1;
 		for (i = indicationPointsSubLength; i < indicationPoints.length; i++) {
 			graphics.fillStyle = "blue";
 			graphics.beginPath();
@@ -69,14 +72,14 @@ var Subpoints = (function () {
 			}
 			subpoints[index] = indicationPoints[readIndex];
 			index++;
-			if(index > 1000)
+			if(index >= pointsLength)
 				index = 0;
 		}
 	};
 	
 	var reset = function() {
 		subpoints = [];
-		for(var i = 0; i < 1001; i++) {
+		for(var i = 0; i <= pointsLength; i++) {
 			subpoints.push({
 				x: undefined,
 				y: undefined
