@@ -1,6 +1,7 @@
 {  
    "name":"bezier_curve",
    "version":"1.0.0",
+   "description":"This application is an example for a render of a bezier curve.",
    "keywords":[  
       "util",
       "functional",
@@ -21,7 +22,7 @@
    },
    "license":"MIT",
    "bugs":{  
-      "url":"httpsgithub.com/ferrybig/beziercurve/issues"
+      "url":"https://github.com/ferrybig/bezier-curve/issues"
    },
    "homepage":"https://ferrybig.me/projects/bezier-curve.html",
    "devDependencies":{  
