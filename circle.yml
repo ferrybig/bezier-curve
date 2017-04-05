@@ -1,6 +1,6 @@
 test:
   override:
-    - gulp build --production
+    - gulp build --env=production
 deployment:
   release:
     branch: master
