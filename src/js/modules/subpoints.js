@@ -18,36 +18,42 @@ var Subpoints = (function () {
 
 	var draw = function (graphics) {
 		for (var i = 0; i < subpoints.length; i++) {
-			graphics.fillStyle = "black";
+			graphics.fillStyle = "gray";
 			graphics.beginPath();
-			graphics.arc(Board.convertX(subpoints[i].x), Board.convertY(subpoints[i].y), 5, 0, 2 * Math.PI);
+			graphics.arc(Board.convertX(subpoints[i].x), Board.convertY(subpoints[i].y), 3, 0, 2 * Math.PI);
 			graphics.closePath();
 			graphics.fill();
 		}
-		for (i = 0; i < indicationPoints.length; i++) {
-			graphics.fillStyle = "gray";
+		for (i = indicationPointsSubLength; i < indicationPoints.length; i++) {
+			graphics.fillStyle = "blue";
 			graphics.beginPath();
+			var radius;
+			if(indicationPoints.length - 1 === i) {
+				radius = 9;
+			} else {
+				radius = 7;
+			}
 			graphics.arc(Board.convertX(indicationPoints[i].x), Board.convertY(indicationPoints[i].y), 7, 0, 2 * Math.PI);
 			graphics.closePath();
 			graphics.fill();
 		}
 		var filler = 0;
-		graphics.strokeStyle = "darkgray";
 		graphics.lineWidth = 1;
-		graphics.beginPath();
 		for(i = indicationPointsSubLength; i > 1; i--) {
+			graphics.beginPath();
+			graphics.strokeStyle = "hsl(" + (i * 60) % 360 + ",100%,30%)";
 			graphics.moveTo(Board.convertX(indicationPoints[filler].x), Board.convertY(indicationPoints[filler].y));
 			for(var j = 1; j < i; j++) {
 				graphics.lineTo(Board.convertX(indicationPoints[filler + j].x), Board.convertY(indicationPoints[filler + j].y));
 			}
 			graphics.stroke();
 			filler += j;
+			graphics.closePath();
 		}
-		graphics.closePath();
 	};
 
 	var update = function () {
-		for(var k = 0; k < 10; k++) {
+		for(var k = 0; k < 5; k++) {
 			var points = Points.getPoints();
 			indicationPointsSubLength = points.length;
 			indicationPoints = points.concat([]);

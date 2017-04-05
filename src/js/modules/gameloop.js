@@ -5,8 +5,8 @@ var Gameloop = (function() {
 	
 	var lastFrameTime;
 	var thisFrameTime = 0;
-	var targetPhysicsRate = 1000 / 30; // Run physics at 5 TPS
-	var targetFrameRate = 1000 / 30; // Run frames at 60 FPS
+	var targetPhysicsRate = 1000 / 30; // Run physics at 20 TPS
+	var targetFrameRate = 1000 / 30; // Run frames at 20 FPS
 	var paused = false;
 	var canvas;
 	var graphics;

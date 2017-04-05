@@ -7,7 +7,7 @@ var Points = (function () {
 
 	var draw = function (graphics) {
 		for (var i = 0; i < points.length; i++) {
-			graphics.fillStyle = "hsl(" + (i * 20) + ",50,50)";
+			graphics.fillStyle = "red";
 			graphics.beginPath();
 			graphics.arc(Board.convertX(points[i].x), Board.convertY(points[i].y), 20, 0, 2 * Math.PI);
 			graphics.closePath();
@@ -58,9 +58,9 @@ var Points = (function () {
 
 	points.push({x: 0.1, y: 0.9});
 
-	points.push({x: 0.9, y: 0.9});
-
 	points.push({x: 0.9, y: 0.1});
+
+	points.push({x: 0.9, y: 0.9});
 
 	var self = {
 		addPoint: addPoint,
